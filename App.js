@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// App.js
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { View, Text } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const Tab = createBottomTabNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const HomeScreen = () => (
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text>Hello World, Welcome to my Mobile App</Text>
+  </View>
+);
+
+const CalculatorScreen = () => (
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text>Calculator Screen</Text>
+  </View>
+);
+
+const AboutScreen = () => (
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text>About Screen</Text>
+  </View>
+);
+
+const App = () => (
+  <NavigationContainer>
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Calculator" component={CalculatorScreen} />
+      <Tab.Screen name="About" component={AboutScreen} />
+    </Tab.Navigator>
+  </NavigationContainer>
+);
+
+export default App;
